@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"log"
 	"os"
 	"os/exec"
@@ -9,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/coreos/go-etcd/etcd"
+	"github.com/namsral/flag"
 )
 
 func parseCommand(cmd []string) (string, []string) {
@@ -63,7 +63,7 @@ func main() {
 	var debug bool
 
 	flag.StringVar(&path, "path", "/example.com/app_name", "Path to application variables")
-	flag.StringVar(&etcdHost, "etcd_host", "http://127.0.0.1:4001", "etcd cluster endpoint")
+	flag.StringVar(&etcdHost, "etcdctl_peers", "http://127.0.0.1:4001", "etcd cluster endpoints, comma delimited")
 	flag.BoolVar(&debug, "debug", false, "log environment variable values")
 	flag.Parse()
 
